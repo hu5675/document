@@ -29,6 +29,6 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: $image
+          image: 10.160.2.83:6110/trip/user-service:latest
           ports:
             - containerPort: 8181

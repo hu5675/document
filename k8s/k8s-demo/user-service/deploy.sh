@@ -5,6 +5,5 @@ if [[ ${COUNT} -gt 0 ]]; then
     echo "update image to :${IMAGE}";
     kubectl set image deployment/user-service-deployment user-service=${IMAGE}
 else
-    sed -i 's/$image/${IMAGE}/g' user-service.yaml
     kubectl create -f user-service.yaml
 fi
