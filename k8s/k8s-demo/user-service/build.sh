@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-mvn clean package
+maven clean package -Dautoconfig.skip=true -Dmaven.test.skip=true;
 TIME=`date "+%Y%m%d%H%M"`;
 GIT_REVISION=`git log -1 --pretty=format:%h`;
 docker login 10.160.2.15 -u hz1203298 -p 340251
