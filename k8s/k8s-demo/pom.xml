@@ -12,6 +12,7 @@
         <module>common-util</module>
         <module>message-service</module>
         <module>user-service</module>
+        <module>user-edge-service</module>
     </modules>
 
 

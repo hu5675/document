@@ -1,7 +1,7 @@
 
 flannel:
 
-kubeadm init --pod-network-cidr=10.244.0.0/16 
+kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16  
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
@@ -35,3 +35,23 @@ kubectl -n kube-system  get secret dashboard-token-rss4r -o jsonpath={.data.toke
 
 kubectl proxy --address='172.31.212.238' --port=8080 --accept-hosts='^*$'
 
+
+
+http://192.168.145.209:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login
+
+vim dashboard-admin.yaml
+
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: kubernetes-dashboard
+labels:
+  k8s-app: kubernetes-dashboard
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+  name: kubernetes-dashboard
+  namespace: kube-system    
