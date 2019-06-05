@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-mvn clean package -Dautoconfig.skip=true -Dmaven.test.skip=true;
+# mvn  clean package -Dautoconfig.skip=true -Dmaven.test.skip=true;
 TIME=`date "+%Y%m%d%H%M"`;
 GIT_REVISION=`git log -1 --pretty=format:%h`;
 IMAGE_NAME=10.160.2.83:6110/trip/message-service:${TIME}_${GIT_REVISION};
