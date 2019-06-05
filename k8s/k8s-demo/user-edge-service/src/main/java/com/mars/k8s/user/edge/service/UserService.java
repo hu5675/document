@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@FeignClient(name = "mars-user-service")
+@FeignClient(name = "user-service")
 public interface UserService {
 
     @GetMapping("/user-service/user/list")
