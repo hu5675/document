@@ -1,6 +1,6 @@
-package com.mars.k8s.user.controller;
+package com.mars.k8s.user.edge.controller;
 
-import com.mars.k8s.user.service.MessageService;
+import com.mars.k8s.user.edge.service.UserService;
 import com.mars.k8s.util.IPUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/user-edge")
+public class UserEdgeController {
 
     @Resource
-    private MessageService messageService;
+    private UserService userService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
@@ -24,11 +24,11 @@ public class UserController {
         List<String> result = new ArrayList<>();
         List<String> localIPList = IPUtils.getLocalIPList();
         for (String ip : localIPList) {
-            result.add("user:" + ip);
+            result.add("user-edge:" + ip);
         }
 
-        List<String> messageList = messageService.getMessageList();
-        result.addAll(messageList);
+        List<String> userList = userService.getMessageList();
+        result.addAll(userList);
         return result;
     }
 }
