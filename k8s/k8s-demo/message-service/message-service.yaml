@@ -6,6 +6,8 @@ metadata:
   name: message-service
   namespace: default
 spec:
+  externalIPs:
+    - 10.160.2.83
   ports:
     - name: message-service
       port: 8182
@@ -14,14 +16,14 @@ spec:
   selector:
     app: message-service
   sessionAffinity: None
-  type: ClusterIP
+  type: LoadBalancer
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: message-service-deployment
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:

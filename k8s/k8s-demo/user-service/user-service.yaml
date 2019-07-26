@@ -6,6 +6,8 @@ metadata:
   name: user-service
   namespace: default
 spec:
+  externalIPs:
+    - 10.160.2.83
   ports:
     - name: user-service
       port: 8181
@@ -14,14 +16,14 @@ spec:
   selector:
     app: user-service
   sessionAffinity: None
-  type: ClusterIP
+  type: LoadBalancer
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: user-service-deployment
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
