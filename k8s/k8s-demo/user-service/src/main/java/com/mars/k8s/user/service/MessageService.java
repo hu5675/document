@@ -5,9 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@FeignClient(name = "message-service",url = "${message.service}")
+//@FeignClient(name = "message-service",url = "${message.service}")
+@FeignClient(name = "message-service")
 public interface MessageService {
 
-    @GetMapping("/message-service/message/list")
+    @GetMapping("/message/list")
     List<String> getMessageList();
 }
